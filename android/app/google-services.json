@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1029362855198",
+    "firebase_url": "https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kamo-7b1be",
+    "storage_bucket": "kamo-7b1be.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029362855198:android:92ca152bc392f082a62d0f",
+        "android_client_info": {
+          "package_name": "com.example.kamo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029362855198-fsr0s05q2gcql7orgskb2523lo3fh7e3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kamo",
+            "certificate_hash": "ae45568b1dfde684d39c61ec0e153d4f76428220"
+          }
+        },
+        {
+          "client_id": "1029362855198-vd4hbghtr6faidp6i0tutbrj4tgb89vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4c-3KCXbDUxRSdGrohiJs1tzlRBf46a8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029362855198-vd4hbghtr6faidp6i0tutbrj4tgb89vk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kamo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

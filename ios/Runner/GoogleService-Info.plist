@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1029362855198-fsr0s05q2gcql7orgskb2523lo3fh7e3.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCynRle0fo64rikdCdqQPBQgFSZCmf_Wok</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1029362855198</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kamo</string>
+	<key>PROJECT_ID</key>
+	<string>kamo-7b1be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kamo-7b1be.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1029362855198:ios:200291d268a44595a62d0f</string>
+	<key>DATABASE_URL</key>
+	<string>https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
