@@ -54,6 +54,11 @@ dependencies:
   introduction_screen: ^3.1.14
   url_launcher: ^6.3.1
   shared_preferences: ^2.3.3
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  get_storage: ^2.1.1
+  get_cli: ^1.8.1
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +86,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/locales/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

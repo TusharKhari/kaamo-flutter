@@ -6,6 +6,8 @@ import 'package:kamo/common/widgets/app_card_widget.dart';
 import 'package:kamo/utils/constants/app_constants.dart';
 import 'package:kamo/utils/routes/route_names.dart';
 
+import '../../../../../utils/language/language_controller.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -14,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var localisationController =
+      Get.put(LocalizationController(sharedPreferences: Get.find()));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,24 +55,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       // Text("${userModalConstant?.toJson()}"),
                       DetailRowWidget(
-                        value1: "Name :",
+                        value1: "name".tr,
                         value2:
                             "${userModalConstant?.firstName?.capitalizeFirst} ${userModalConstant?.lastName?.capitalizeFirst}",
                       ),
                       DetailRowWidget(
-                        value1: "email :",
+                        value1: "email".tr,
                         value2: "${userModalConstant?.email}",
                       ),
                       DetailRowWidget(
-                        value1: "Mobile No. :",
+                        value1: "mobileNo".tr,
                         value2: "${userModalConstant?.mobileNumber}",
                       ),
                       DetailRowWidget(
-                        value1: "Address :",
+                        value1: "address".tr,
                         value2: "${userModalConstant?.fullAddress}",
                       ),
                       DetailRowWidget(
-                        value1: "Work Areas :",
+                        value1: "workAreas".tr,
                         value2:
                             "${userModalConstant?.workingLevel1}\n (${userModalConstant?.workingLevel2})",
                       ),
@@ -80,6 +84,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: IconButton(
+          onPressed: () {
+            localisationController.setLanguage(Locale('hi', 'IN'));
+          },
+          icon: Icon(
+            Icons.language,
+            color: Colors.black,
+          )),
     );
   }
 }
