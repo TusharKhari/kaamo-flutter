@@ -6,6 +6,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kamo/utils/assets/app_images.dart';
 import 'package:kamo/utils/routes/route_names.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/constants/app_constants.dart';
 import '../../utils/language/language_controller.dart';
 import '../vendor/auth/controllers/auth_controller.dart';
@@ -39,11 +40,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void _onIntroEnd(context) {
+  void _onIntroEnd(context) async {
     // Navigator.of(context).pushReplacement(
     //   MaterialPageRoute(builder: (_) => const HomePage()),
     // );
     Get.offAllNamed(AppRouteNames().chooseTypeScreen);
+    // SharedPreferences introCompleted;
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    print("[[IntroCompleted]] Completed Key == introCompleted");
+    sharedPreferences.setBool("introCompleted", true);
     // Get.offAllNamed(AppRouteNames().signUpScreen);
   }
 
