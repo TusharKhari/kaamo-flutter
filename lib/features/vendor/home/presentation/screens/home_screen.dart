@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Text(
-          "KAAMO EVENTS",
+          "title".tr,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Colors.white,
               ),
@@ -84,14 +84,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      floatingActionButton: IconButton(
-          onPressed: () {
-            localisationController.setLanguage(Locale('hi', 'IN'));
-          },
-          icon: Icon(
-            Icons.language,
-            color: Colors.black,
-          )),
+      // floatingActionButton: IconButton(
+      //     onPressed: () {
+      //       // print(
+      //       //     "[[Language Code]] ${localisationController.sharedPreferences.getString("country_code")}  ${localisationController.sharedPreferences.getString("language_code")}");
+      //       // localisationController.setLanguage(Locale('hi', 'IN'));
+      //       // sharedPreferences.getString(AppConstants.LANGUAGE_CODE)
+      //       print(
+      //           "[[Language]]  ${localisationController.sharedPreferences.getString("country_code")}  ${localisationController.sharedPreferences.getString("language_code")}");
+      //       if (localisationController.sharedPreferences
+      //                   .getString("country_code") ==
+      //               "IN" &&
+      //           localisationController.sharedPreferences
+      //                   .getString("language_code") ==
+      //               "hi") {
+      //         localisationController.setLanguage(Locale('en', 'US'));
+      //       } else {
+      //         localisationController.setLanguage(Locale('hi', 'IN'));
+      //       }
+      //     },
+      //     icon: Icon(
+      //       Icons.language,
+      //       color: Colors.black,
+      //     )),
     );
   }
 }

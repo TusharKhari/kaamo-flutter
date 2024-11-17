@@ -61,7 +61,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Text(
-          "KAAMO EVENTS",
+          "title".tr,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Colors.white,
               ),
@@ -141,7 +141,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                               // searchQuery = value;
                             });
                           },
-                          hintText: "Search",
+                          hintText: "search".tr,
                           leading: Icon(
                             Icons.search,
                             color: Colors.grey,
@@ -167,7 +167,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                 });
                               },
                               child: Text(
-                                "Clear Filter   ",
+                                "clearFilter".tr,
                                 style: TextStyle(
                                     fontSize: 16,
                                     decoration: TextDecoration.underline),
@@ -225,7 +225,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Address : "),
+                                        Text("address".tr),
                                         Flexible(
                                           child: Text("${user.fullAddress}"),
                                         )
@@ -236,7 +236,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Work : "),
+                                        Text("work".tr),
                                         Flexible(
                                             child: Text(
                                                 "${user.workingLevel1} (${user.workingLevel2})"))
@@ -247,7 +247,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("Contact : "),
+                                        Text("contact".tr),
                                         IconButton(
                                           onPressed: () {
                                             vendorsShowController.makingPhoneCall(

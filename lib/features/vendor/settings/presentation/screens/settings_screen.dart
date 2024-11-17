@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:kamo/common/widgets/app_card_widget.dart';
 import 'package:kamo/common/widgets/app_loading_hud.dart';
 
+import '../../../../../utils/language/language_controller.dart';
 import '../../../../../utils/routes/route_names.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -19,6 +20,8 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   bool isLoading = false;
+  var localisationController =
+      Get.put(LocalizationController(sharedPreferences: Get.find()));
   Future<void> deleteUser() async {
     try {
       setState(() {
@@ -47,7 +50,7 @@ class _SettingScreenState extends State<SettingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Text(
-          "SETTINGS",
+          "settings".tr,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Colors.white,
               ),
@@ -62,7 +65,7 @@ class _SettingScreenState extends State<SettingScreen> {
               //
               30.h.verticalSpace,
               SettingCardWidget(
-                title: "Edit Info",
+                title: "editInfo".tr,
                 icon: Icons.edit,
                 onTap: () {
                   Get.toNamed(AppRouteNames().registrationScreen,
@@ -71,7 +74,25 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               10.h.verticalSpace,
               SettingCardWidget(
-                title: "Logout",
+                title: "changeLanguage".tr,
+                icon: Icons.delete,
+                onTap: () async {
+                  // await deleteUser();
+                  if (localisationController.sharedPreferences
+                              .getString("country_code") ==
+                          "IN" &&
+                      localisationController.sharedPreferences
+                              .getString("language_code") ==
+                          "hi") {
+                    localisationController.setLanguage(Locale('en', 'US'));
+                  } else {
+                    localisationController.setLanguage(Locale('hi', 'IN'));
+                  }
+                },
+              ),
+              10.h.verticalSpace,
+              SettingCardWidget(
+                title: "logout".tr,
                 icon: Icons.logout,
                 onTap: () {
                   FirebaseAuth.instance.signOut();
@@ -81,7 +102,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               10.h.verticalSpace,
               SettingCardWidget(
-                title: "Delete Account",
+                title: "deleteAccount".tr,
                 icon: Icons.delete,
                 onTap: () async {
                   await deleteUser();

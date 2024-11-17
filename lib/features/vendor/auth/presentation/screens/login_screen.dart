@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
- 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         // welcome back, you've missed
                         Text(
-                          "Welcome back you've been missed!",
+                          "welcomeBackYouveBeenMissed".tr,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium
@@ -73,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 45.h),
                         // username textfield
                         AppTextField(
-                          hintText: "Email",
+                          hintText: "emailTitle".tr,
                           validator: appValidatorsConstant.emailValidator,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (p0) {
@@ -82,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 20.h),
                         AppTextField(
-                          hintText: "Password",
+                          hintText: "password".tr,
                           // validator: appValidatorsConstant.emailValidator,
                           obscureText: isObscureText,
                           onChanged: (p0) {
@@ -110,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller.resetPassword(email: email);
                               },
                               child: Text(
-                                "Forgot Password?",
+                                "forgotPassword".tr,
                                 style: TextStyle(color: Colors.grey[500]),
                               ),
                             ),
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 22.h),
                         AppButton(
-                          title: "Sign In",
+                          title: "signIn".tr,
                           onTap: () async {
                             var res = await controller.loginAccount(
                                 email: email, password: password);
@@ -139,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         Text(
-                          "Or continue with",
+                          "orContinueWith".tr,
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                         Padding(
@@ -168,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Not a member?",
+                                "notAMember".tr,
                                 style: TextStyle(
                                   color: Colors.grey[700],
                                 ),
@@ -177,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 4,
                               ),
                               Text(
-                                "Register Now",
+                                "registerNow".tr,
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,

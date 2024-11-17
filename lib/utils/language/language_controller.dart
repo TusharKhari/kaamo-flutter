@@ -43,6 +43,7 @@ class LocalizationController extends GetxController implements GetxService {
   }
 
   void setLanguage(Locale locale) {
+    
     Get.updateLocale(locale);
     _locale = locale;
     saveLanguage(_locale);

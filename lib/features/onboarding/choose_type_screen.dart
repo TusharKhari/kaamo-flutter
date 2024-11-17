@@ -29,7 +29,7 @@ class _ChooseTypeScreenState extends State<ChooseTypeScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppButton(
-                  title: "Looking for Vendors ?",
+                  title: "lookingForVendors".tr,
                   onTap: () {
                     Get.offAllNamed(AppRouteNames().vendorsShowScreen);
                   },
@@ -37,7 +37,7 @@ class _ChooseTypeScreenState extends State<ChooseTypeScreen> {
                 ),
                 30.h.verticalSpace,
                 AppButton(
-                  title: "Register as vendor !",
+                  title: "registerAsVendor".tr,
                   // isReverse: true,
                   onTap: () {
                     Get.toNamed(AppRouteNames().signUpScreen);
