@@ -175,11 +175,13 @@ class RegistrationController extends GetxController {
         "id": 1,
         "name": "Music",
         "subcategories": [
-          {"id": 1, "name": "Band"},
+          {"id": 1, "name": " Band"},
           {"id": 2, "name": "DJ"},
-          {"id": 3, "name": "Dhol"},
-          {"id": 4, "name": "Live Performances"},
-          {"id": 5, "name": "Singers"}
+          {"id": 2, "name": "Live Sound"},
+          {"id": 3, "name": "Punjabi Dhol"},
+          {"id": 4, "name": "Lok vadya yantra"},
+          {"id": 5, "name": "Live Performances"},
+          {"id": 6, "name": "Singers"},
         ]
       },
       {
@@ -189,26 +191,15 @@ class RegistrationController extends GetxController {
           {"id": 1, "name": "Floral Arrangements"},
           {"id": 2, "name": "Table Centerpieces"},
           {"id": 3, "name": "Lighting"},
-          {"id": 4, "name": "Drapes"}
         ]
       },
-      {
-        "id": 3,
-        "name": "Photography",
-        "subcategories": [
-          {"id": 1, "name": "Candid"},
-          {"id": 2, "name": "Traditional"},
-          {"id": 3, "name": "Pre-Wedding Shoot"},
-          {"id": 4, "name": "Drone Photography"}
-        ]
-      },
+      {"id": 3, "name": "Photography OR Videography", "subcategories": []},
       {
         "id": 4,
         "name": "Food & Catering",
         "subcategories": [
           {"id": 1, "name": "Buffet"},
           {"id": 2, "name": "Cocktail Menu"},
-          {"id": 3, "name": "Traditional Cuisine"},
           {"id": 4, "name": "Dessert Stations"},
           {"id": 5, "name": "Live Food Counters"}
         ]
@@ -220,7 +211,8 @@ class RegistrationController extends GetxController {
           {"id": 1, "name": "Indoor"},
           {"id": 2, "name": "Outdoor"},
           {"id": 3, "name": "Beach Wedding"},
-          {"id": 4, "name": "Garden"}
+          {"id": 4, "name": "Garden"},
+          {"id": 5, "name": "Hotel"}
         ]
       },
       {
@@ -229,49 +221,32 @@ class RegistrationController extends GetxController {
         "subcategories": [
           {"id": 1, "name": "Printed Invitations"},
           {"id": 2, "name": "Digital Invitations"},
-          {"id": 3, "name": "Wedding Website"}
-        ]
-      },
-      {
-        "id": 7,
-        "name": "Bridal Wear",
-        "subcategories": [
-          {"id": 1, "name": "Wedding Gowns"},
-          {"id": 2, "name": "Sarees"},
-          {"id": 3, "name": "Lehengas"},
-          {"id": 4, "name": "Bridal Accessories"}
         ]
       },
       {
         "id": 8,
-        "name": "Groom Wear",
-        "subcategories": [
-          {"id": 1, "name": "Suits"},
-          {"id": 2, "name": "Sherwanis"},
-          {"id": 3, "name": "Kurtas"},
-          {"id": 4, "name": "Accessories"}
-        ]
-      },
-      {
-        "id": 9,
         "name": "Makeup & Beauty",
         "subcategories": [
           {"id": 1, "name": "Bridal Makeup"},
+          {"id": 1, "name": "Groom Makeup"},
+          {"id": 1, "name": "Groom Styling"},
           {"id": 2, "name": "Hair Styling"},
           {"id": 3, "name": "Henna Designs"},
           {"id": 4, "name": "Pre-Wedding Skincare"}
         ]
       },
+      {"id": 9, "name": "Pandit", "subcategories": []},
       {
         "id": 10,
-        "name": "Wedding Favors",
+        "name": "Cultural Activities",
         "subcategories": [
-          {"id": 1, "name": "Customized Gifts"},
-          {"id": 2, "name": "Edible Favors"},
-          {"id": 3, "name": "Eco-Friendly Favors"},
-          {"id": 4, "name": "Luxury Favors"}
+          {"id": 1, "name": "Jagran"},
+          {"id": 2, "name": "Kariyala"},
+          {"id": 3, "name": "Cultural Groups"},
+          {"id": 4, "name": "Dhaja"},
+          {"id": 4, "name": "Jhanki"},
         ]
-      }
+      },
     ]
   };
 

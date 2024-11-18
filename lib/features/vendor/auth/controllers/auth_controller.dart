@@ -28,7 +28,8 @@ class AuthController extends GetxController {
             Get.offAllNamed(AppRouteNames().homeScreen);
           }
         } else {
-          Get.offAllNamed(AppRouteNames().signUpScreen);
+          // Get.offAllNamed(AppRouteNames().signUpScreen);
+          Get.offAllNamed(AppRouteNames().chooseTypeScreen);
         }
       }
     } catch (e) {
