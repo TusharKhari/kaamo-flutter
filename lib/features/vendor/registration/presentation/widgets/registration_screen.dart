@@ -62,7 +62,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               registrationController.registrationModal.mobileNumber ?? "";
           streetController.text =
               registrationController.registrationModal.streetAddress ?? "";
-              pinCodeController.text= registrationController.registrationModal.pinCode ?? "";
+          pinCodeController.text =
+              registrationController.registrationModal.pinCode ?? "";
         }
       },
     );
@@ -101,14 +102,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         children: [
                           30.h.verticalSpace,
                           Text(
-                            "Let’s Set Up Your Account",
+                            "letsSetUpYourAccount".tr,
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineMedium
                                 ?.copyWith(color: Colors.grey[700]),
                           ),
                           Text(
-                            "You're just a few steps away from joining us. Fill out the details below to complete your registration and get started!",
+                            "youreJustAFewStepsAwayFromJoiningUsFillOutTheDetailsBelowToCompleteYourRegistrationAndGetStarted"
+                                .tr,
                             style:
                                 Theme.of(context).textTheme.bodyLarge?.copyWith(
                                       color: Colors.grey[500],
@@ -122,7 +124,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 child: AppTextField(
                                   padding: EdgeInsets.zero,
                                   controller: firstNameController,
-                                  hintText: "First Name",
+                                  hintText: "firstName".tr,
                                   validator: (p0) {
                                     if (p0?.isEmpty ?? false) {
                                       return "";
@@ -141,7 +143,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 child: AppTextField(
                                   padding: EdgeInsets.zero,
                                   controller: lastNameController,
-                                  hintText: "Last Name",
+                                  hintText: "lastName".tr,
                                   onChanged: (p0) {
                                     controller.registrationModal = controller
                                         .registrationModal
@@ -155,7 +157,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           AppTextField(
                             padding: EdgeInsets.zero,
                             controller: mobileNoController,
-                            hintText: "Mobile Number",
+                            hintText: "mobileNumber".tr,
                             keyboardType: TextInputType.number,
                             inputFormatters: [
                               LengthLimitingTextInputFormatter(10),
@@ -176,7 +178,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           AppTextField(
                             controller: streetController,
                             padding: EdgeInsets.zero,
-                            hintText: "Street Address",
+                            hintText: "streetAddress".tr,
                             validator: (p0) {
                               if (p0?.isEmpty ?? false) {
                                 return "";
@@ -258,7 +260,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                             MainAxisAlignment.end,
                                         children: [
                                           Text(
-                                            "Use my location",
+                                            "useMyLocation".tr,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge
@@ -310,7 +312,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     AppTextField(
                                       controller: pinCodeController,
                                       padding: EdgeInsets.zero,
-                                      hintText: "Pin Code",
+                                      hintText: "pinCode".tr,
                                       inputFormatters: [
                                         LengthLimitingTextInputFormatter(6),
                                       ],
@@ -331,7 +333,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 ),
                           10.h.verticalSpace,
                           AppDropDownWidget(
-                            title: "Work Type",
+                            title: "workType".tr,
                             selectedTitle:
                                 controller.registrationModal.workingLevel1,
                             options: [],
@@ -368,7 +370,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                           30.h.verticalSpace,
                           AppButton(
-                            title: isEdit ? "Edit" : "Submit",
+                            title: isEdit ? "edit".tr : "submit".tr,
                             onTap: () async {
                               FocusScope.of(context).unfocus();
                               var res = isEdit

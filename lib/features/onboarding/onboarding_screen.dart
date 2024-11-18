@@ -6,10 +6,10 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kamo/utils/assets/app_images.dart';
 import 'package:kamo/utils/routes/route_names.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/constants/app_constants.dart';
+import '../../utils/language/language_controller.dart';
 import '../vendor/auth/controllers/auth_controller.dart';
-
-
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -22,8 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
   late final AuthController authController;
 
-
-@override
+  @override
   void initState() {
     // TODO: implement initState
     init();
@@ -41,11 +40,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void _onIntroEnd(context) {
+  void _onIntroEnd(context) async {
     // Navigator.of(context).pushReplacement(
     //   MaterialPageRoute(builder: (_) => const HomePage()),
     // );
     Get.offAllNamed(AppRouteNames().chooseTypeScreen);
+    // SharedPreferences introCompleted;
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    print("[[IntroCompleted]] Completed Key == introCompleted");
+    sharedPreferences.setBool("introCompleted", true);
     // Get.offAllNamed(AppRouteNames().signUpScreen);
   }
 
@@ -58,6 +61,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(fontSize: 19.0);
+    var localisationController =
+        Get.put(LocalizationController(sharedPreferences: Get.find()));
     const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
@@ -74,21 +79,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           allowImplicitScrolling: true,
           autoScrollDuration: 3000,
           infiniteAutoScroll: true,
-          // globalHeader: Align(
-          //   alignment: Alignment.topRight,
-          //   child: SafeArea(
-          //     child: Padding(
-          //       padding: const EdgeInsets.only(top: 16, right: 16),
-          //       child: _buildImage('flutter.png', 100),
-          //     ),
-          //   ),
-          // ),
+          globalHeader: Align(
+            alignment: Alignment.topRight,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16, right: 16),
+                // child: _buildImage('flutter.png'),
+                child: InkWell(
+                    onTap: () {
+                      if (localisationController.sharedPreferences
+                                  .getString("country_code") ==
+                              "IN" &&
+                          localisationController.sharedPreferences
+                                  .getString("language_code") ==
+                              "hi") {
+                        localisationController.setLanguage(Locale('en', 'US'));
+                      } else {
+                        localisationController.setLanguage(Locale('hi', 'IN'));
+                      }
+                    },
+                    child: Icon(Icons.language)),
+              ),
+            ),
+          ),
           globalFooter: SizedBox(
             width: double.infinity,
             height: 60,
             child: ElevatedButton(
               child: Text(
-                'Let\'s go right away!',
+                'letsGoRightAway'.tr,
                 style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
@@ -99,23 +118,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           pages: [
             PageViewModel(
-              title: "Welcome to Kaamo Events!",
+              title: "welcomeToKaamoEvents".tr,
               body:
-                  "Vendors, register and showcase your services; users, discover the best vendors for your event!",
+                  "vendorsRegisterAndShowcaseYourServicesUsersDiscoverTheBestVendorsForYourEvent"
+                      .tr,
               image: _buildImage(AppImages().welcomeLottie),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Easy to use !",
+              title: "easyToUse".tr,
               body:
-                  "A seamless experience for both vendors and planners—find, book, and connect!",
+                  "aSeamlessExperienceForBothVendorsAndPlannersFindBookAndConnect"
+                      .tr,
               image: _buildImage(AppImages().weddingLottie),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Wide reach !",
+              title: "wideReach".tr,
               body:
-                  "Reach more clients. Register your services and get noticed by event planners.",
+                  "reachMoreClientsRegisterYourServicesAndGetNoticedByEventPlanners"
+                      .tr,
               image: _buildImage(AppImages().findingLottie),
               decoration: pageDecoration,
             ),
@@ -130,12 +152,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           //rtl: true, // Display as right-to-left
 
           back: const Icon(Icons.arrow_back),
-          skip: Text('Skip',
+          skip: Text('skip'.tr,
               style: TextStyle(
                   fontWeight: FontWeight.w600, color: logoImageColor)),
 
           next: const Icon(Icons.arrow_forward),
-          done: Text('Done',
+          done: Text('done'.tr,
               style: TextStyle(
                   fontWeight: FontWeight.w600, color: logoImageColor)),
           nextStyle:

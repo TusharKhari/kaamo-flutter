@@ -3,22 +3,32 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../common/functions/app_function_impl.dart';
 import '../../../../utils/routes/route_names.dart';
 
 class AuthController extends GetxController {
   RxBool isLoading = false.obs;
-
   Future<void> getUserStatus() async {
     try {
+      SharedPreferences introCompleted = await SharedPreferences.getInstance();
       isLoading.value = true;
       update();
-      if (FirebaseAuth.instance.currentUser != null) {
-        var d = await AppFunctionImpl().getUserDetails();
-        if (d == null) {
-          Get.offAllNamed(AppRouteNames().registrationScreen);
+      print(
+          "[[IntroCompleted]] key == introCompleted,  ${introCompleted.getBool("introCompleted")}");
+      if (introCompleted.getBool("introCompleted") != true) {
+        // Get.offAll(AppRouteNames().onboardingScreen);
+      } else {
+        print("object IntroCompleted");
+        if (FirebaseAuth.instance.currentUser != null) {
+          var d = await AppFunctionImpl().getUserDetails();
+          if (d == null) {
+            Get.offAllNamed(AppRouteNames().registrationScreen);
+          } else {
+            Get.offAllNamed(AppRouteNames().homeScreen);
+          }
         } else {
-          Get.offAllNamed(AppRouteNames().homeScreen);
+          Get.offAllNamed(AppRouteNames().signUpScreen);
         }
       }
     } catch (e) {

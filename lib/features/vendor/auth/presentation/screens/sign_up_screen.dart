@@ -67,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: 250,
                         ),
                         Text(
-                          "Welcome, Your Journey Begins Here!",
+                          "welcomeYourJourneyBeginsHere".tr,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium
@@ -77,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         // username textfield
                         AppTextField(
-                          hintText: "Email",
+                          hintText: "emailTitle".tr,
                           validator: appValidatorsConstant.emailValidator,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (p0) {
@@ -86,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         SizedBox(height: 20.h),
                         AppTextField(
-                          hintText: "Password",
+                          hintText: "password".tr,
                           // validator: appValidatorsConstant.emailValidator,
                           obscureText: isObscureText,
                           onChanged: (p0) {
@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         SizedBox(height: 20.h),
                         AppTextField(
-                          hintText: "Confirm Password",
+                          hintText: "confirmPassword".tr,
                           // validator: appValidatorsConstant.emailValidator,
                           obscureText: isObscureText,
                           onChanged: (p0) {
@@ -141,7 +141,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         // ),
                         SizedBox(height: 22.h),
                         AppButton(
-                          title: "Sign Up",
+                          title: "signUp".tr,
                           onTap: () async {
                             // log("jnflkdm");
                             if (password.trim() == cPassword.trim()) {
@@ -164,7 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         Text(
-                          "Or continue with",
+                          "orContinueWith".tr,
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                         Padding(
@@ -193,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Already a member?",
+                                "alreadyAMember".tr,
                                 style: TextStyle(
                                   color: Colors.grey[700],
                                 ),
@@ -202,7 +202,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 width: 4,
                               ),
                               Text(
-                                "Login Now",
+                                "loginNow".tr,
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
