@@ -3,7 +3,7 @@ import 'package:kamo/utils/routes/route_names.dart';
 
 import '../../features/onboarding/choose_type_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
-import '../../features/user/vendor/presentation/screens/vendors_show_screen.dart';
+import '../../features/user/vendor_display/presentation/screens/vendors_show_screen.dart';
 import '../../features/vendor/auth/presentation/screens/login_screen.dart';
 import '../../features/vendor/auth/presentation/screens/sign_up_screen.dart';
 import '../../features/vendor/home/presentation/screens/home_screen.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kamo/common/widgets/app_loading_hud.dart';
-import 'package:kamo/features/user/vendor/controller/vendors_show_controller.dart';
+import 'package:kamo/features/user/vendor_display/controller/vendors_show_controller.dart';
 
 class VendorsShowScreen extends StatefulWidget {
   const VendorsShowScreen({super.key});

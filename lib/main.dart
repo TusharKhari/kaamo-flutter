@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           // initialRoute: AppRouteNames().signUpScreen,
           getPages: routesPages,
           debugShowCheckedModeBanner: false,
-          title: 'First',
+          title: 'KAAMO EVENTS',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.grey[300],
             textTheme: GoogleFonts.openSansTextTheme(
