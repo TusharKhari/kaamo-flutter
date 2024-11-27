@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/app_constants.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton({super.key, required this.title, this.onTap, this.isReverse, this.bColor});
+  const AppButton(
+      {super.key,
+      required this.title,
+      this.onTap,
+      this.isReverse,
+      this.bColor});
   final String title;
   final void Function()? onTap;
   final bool? isReverse;
@@ -16,7 +21,8 @@ class AppButton extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-            color: bColor ?? (isReverse == true ? logoImageColor : Colors.black),
+            color:
+                bColor ?? (isReverse == true ? logoImageColor : Colors.black),
             borderRadius: BorderRadius.circular(8)),
         child: Center(
           child: Text(

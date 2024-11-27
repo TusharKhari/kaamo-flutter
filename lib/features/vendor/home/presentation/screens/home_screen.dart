@@ -1,11 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kamo/common/buttons/app_button.dart';
 import 'package:kamo/common/widgets/app_card_widget.dart';
+import 'package:kamo/features/vendor/home/controller/home_controller.dart';
+import 'package:kamo/features/vendor/registration/controller/registration_controller.dart';
+import 'package:kamo/utils/assets/app_images.dart';
 import 'package:kamo/utils/constants/app_constants.dart';
 import 'package:kamo/utils/routes/route_names.dart';
-
+import 'package:lottie/lottie.dart';
 import '../../../../../utils/language/language_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black54,
+        // backgroundColor: Colors.black54,
+        backgroundColor: logoImageColor,
         title: Text(
           "title".tr,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -46,8 +50,28 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              90.h.verticalSpace,
+              20.h.verticalSpace,
               // Text("${userModalConstant?.toJson()}")
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Available",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  20.w.horizontalSpace,
+                  Switch(
+                    activeTrackColor: logoImageColor,
+                    value: (userModalConstant?.isActive ?? false),
+                    onChanged: (value) async {
+                      var regC = Get.put(HomeController());
+                      await regC.updateStatus();
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
+              20.h.verticalSpace,
               AppCardWidget(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -76,37 +100,45 @@ class _HomeScreenState extends State<HomeScreen> {
                         value2:
                             "${userModalConstant?.workingLevel1}\n (${userModalConstant?.workingLevel2})",
                       ),
+                      DetailRowWidget(
+                        value1: "Points",
+                        value2: "${userModalConstant?.points ?? 0} ",
+                      ),
                     ],
                   ),
                 ),
+              ),
+              20.h.verticalSpace,
+              Row(
+                children: [
+                  Expanded(child: Lottie.asset(AppImages().leadsLottie)),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Want to fix your next booking or earn more ?",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              5.verticalSpace,
+              AppButton(
+                title: "Book Now !",
+                bColor: Colors.orange,
+                onTap: () {
+                  //
+                },
               ),
             ],
           ),
         ),
       ),
-      // floatingActionButton: IconButton(
-      //     onPressed: () {
-      //       // print(
-      //       //     "[[Language Code]] ${localisationController.sharedPreferences.getString("country_code")}  ${localisationController.sharedPreferences.getString("language_code")}");
-      //       // localisationController.setLanguage(Locale('hi', 'IN'));
-      //       // sharedPreferences.getString(AppConstants.LANGUAGE_CODE)
-      //       print(
-      //           "[[Language]]  ${localisationController.sharedPreferences.getString("country_code")}  ${localisationController.sharedPreferences.getString("language_code")}");
-      //       if (localisationController.sharedPreferences
-      //                   .getString("country_code") ==
-      //               "IN" &&
-      //           localisationController.sharedPreferences
-      //                   .getString("language_code") ==
-      //               "hi") {
-      //         localisationController.setLanguage(Locale('en', 'US'));
-      //       } else {
-      //         localisationController.setLanguage(Locale('hi', 'IN'));
-      //       }
-      //     },
-      //     icon: Icon(
-      //       Icons.language,
-      //       color: Colors.black,
-      //     )),
     );
   }
 }

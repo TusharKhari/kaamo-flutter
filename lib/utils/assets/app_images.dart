@@ -9,4 +9,5 @@ class AppImages {
   String findingLottie ="assets/images/finding.json";
   String weddingLottie ="assets/images/wedding-shoot.json";
   String welcomeLottie ="assets/images/welcome_lottie.json";
+  String leadsLottie ="assets/images/leads_lottie.json";
 }

@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                   // initialRoute: AppRouteNames().signUpScreen,
                   getPages: routesPages,
                   debugShowCheckedModeBanner: false,
-                  title: 'First',
+                  title: 'KAAMO',
                   theme: ThemeData(
                     scaffoldBackgroundColor: Colors.grey[300],
                     textTheme: GoogleFonts.openSansTextTheme(
@@ -58,11 +58,6 @@ class MyApp extends StatelessWidget {
                   home: child,
                 );
               });
-            }
-
-            // child: const LoginScreen(),
-            );
+            });
   }
 }
-
-/* */

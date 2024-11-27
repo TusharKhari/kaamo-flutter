@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kamo/common/widgets/app_card_widget.dart';
 import 'package:kamo/common/widgets/app_loading_hud.dart';
+import 'package:kamo/utils/constants/app_constants.dart';
 
 import '../../../../../utils/language/language_controller.dart';
 import '../../../../../utils/routes/route_names.dart';
@@ -48,7 +49,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black54,
+        backgroundColor: logoImageColor,
         title: Text(
           "settings".tr,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(

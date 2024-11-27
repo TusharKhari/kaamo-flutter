@@ -13,6 +13,8 @@ class RegistrationModal {
   String? workingLevel2;
   String? latitude;
   String? longitude;
+  bool? isActive;
+  int? points;
 
   RegistrationModal({
     this.firstName,
@@ -29,6 +31,8 @@ class RegistrationModal {
     this.workingLevel2,
     this.latitude,
     this.longitude,
+    this.isActive,
+    this.points,
   });
 
   factory RegistrationModal.fromJson(Map<String, dynamic> json) {
@@ -47,6 +51,8 @@ class RegistrationModal {
       workingLevel2: json['workingLevel2'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
+      isActive: json['isActive'] as bool?,
+      points: json['points'] as int?,
     );
   }
 
@@ -60,12 +66,13 @@ class RegistrationModal {
         'state': state,
         'city': city,
         'pinCode': pinCode,
-        'fullAddress':
-            "$streetAddress $city $state $pinCode",
+        'fullAddress': "$streetAddress $city $state $pinCode",
         'workingLevel1': workingLevel1,
         'workingLevel2': workingLevel2,
         'latitude': latitude,
         'longitude': longitude,
+        'points': points,
+        'isActive': isActive
       };
 
   RegistrationModal copyWith({
@@ -83,6 +90,8 @@ class RegistrationModal {
     String? workingLevel2,
     String? latitude,
     String? longitude,
+    bool? isActive,
+    int? points,
   }) {
     return RegistrationModal(
       firstName: firstName ?? this.firstName,
@@ -99,6 +108,8 @@ class RegistrationModal {
       workingLevel2: workingLevel2 ?? this.workingLevel2,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
+      isActive: isActive ?? this.isActive,
+      points: points ?? this.points,
     );
   }
 }
