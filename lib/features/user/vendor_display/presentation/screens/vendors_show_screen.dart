@@ -1,10 +1,10 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kamo/common/widgets/app_loading_hud.dart';
 import 'package:kamo/features/user/vendor_display/controller/vendors_show_controller.dart';
+import 'package:kamo/utils/constants/app_constants.dart';
 
 class VendorsShowScreen extends StatefulWidget {
   const VendorsShowScreen({super.key});
@@ -81,7 +81,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                       //
                       //
                       SizedBox(
-                        height: 60,
+                        height: 70,
                         child: ListView.builder(
                           shrinkWrap: true,
                           itemCount: controller.categoriesList.length,
@@ -98,7 +98,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                       color: selectedIdx != index
-                                          ? Colors.grey
+                                          ? logoImageColor
                                           : Colors.transparent,
                                       // color: Colors.grey
                                     ),
@@ -107,12 +107,14 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                         ? Colors.grey
                                         : null,
                                     borderRadius: BorderRadius.circular(8)),
-                                width: 120,
+                                width: 150,
                                 margin: EdgeInsets.symmetric(horizontal: 10),
-                                padding: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(5),
                                 child: Center(
                                     child: Text(
                                   "${det.name}",
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   textAlign: TextAlign.center,
                                 )),
                               ),
@@ -141,7 +143,7 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                               // searchQuery = value;
                             });
                           },
-                          hintText: "search".tr,
+                          hintText: "searchLocation".tr,
                           leading: Icon(
                             Icons.search,
                             color: Colors.grey,
@@ -162,12 +164,13 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                             visible: (selectedIdx != -1),
                             child: InkWell(
                               onTap: () {
+                                FocusScope.of(context).unfocus();
                                 setState(() {
                                   selectedIdx = -1;
                                 });
                               },
                               child: Text(
-                                "clearFilter".tr,
+                                "${"clearFilter".tr}    ",
                                 style: TextStyle(
                                     fontSize: 16,
                                     decoration: TextDecoration.underline),
@@ -225,56 +228,103 @@ class _VendorsShowScreenState extends State<VendorsShowScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("address".tr),
+                                        Text(
+                                          "address".tr,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
+                                                fontSize: 18,
+                                              ),
+                                        ),
+                                        SizedBox(
+                                          width: 30,
+                                        ),
                                         Flexible(
-                                          child: Text("${user.fullAddress}"),
+                                          child: Text(
+                                            "${user.fullAddress}",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge
+                                                ?.copyWith(
+                                                  fontSize: 18,
+                                                ),
+                                          ),
                                         )
                                       ],
                                     ),
-                                    //
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("work".tr),
-                                        Flexible(
-                                            child: Text(
-                                                "${user.workingLevel1} (${user.workingLevel2})"))
-                                      ],
+                                    SizedBox(
+                                      height: 15,
                                     ),
                                     //
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("contact".tr),
+                                        Text(
+                                          "work".tr,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
+                                                fontSize: 18,
+                                              ),
+                                        ),
+                                        Flexible(
+                                            child: Text(
+                                          "${user.workingLevel1} (${user.workingLevel2})",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
+                                                fontSize: 18,
+                                              ),
+                                        ))
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    //
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "contact".tr,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
+                                                fontSize: 18,
+                                              ),
+                                        ),
                                         IconButton(
                                           onPressed: () {
                                             vendorsShowController.makingPhoneCall(
-                                                phoneNo: ((user.fullAddress
-                                                                ?.toLowerCase()
-                                                                .contains(
-                                                                    "solan") ??
-                                                            false) ||
-                                                        (user.city
-                                                                ?.toLowerCase()
-                                                                .contains(
-                                                                    "solan") ??
-                                                            false) ||
-                                                        (user.pinCode
-                                                                ?.toLowerCase()
-                                                                .contains(
-                                                                    "173211") ??
-                                                            false) ||
-                                                        (user.city
-                                                                ?.toLowerCase()
-                                                                .contains(
-                                                                    "173212") ??
-                                                            false))
-                                                    ? (user.callingMobileNumber ??
-                                                        "")
-                                                    : (user.mobileNumber ??
-                                                        ""));
+                                                phoneNo: (((user.fullAddress?.toLowerCase().contains("solan") ?? false) ||
+                                                            (user.fullAddress
+                                                                    ?.toLowerCase()
+                                                                    .contains(
+                                                                        "shimla") ??
+                                                                false)) ||
+                                                        ((user.city?.toLowerCase().contains("solan") ?? false) ||
+                                                            (user.city?.toLowerCase().contains("shimla") ??
+                                                                false)) ||
+                                                        ((user.pinCode?.toLowerCase().contains("173211") ?? false) ||
+                                                            (user.pinCode
+                                                                    ?.toLowerCase()
+                                                                    .contains(
+                                                                        "1710") ??
+                                                                false)) ||
+                                                        ((user.city?.toLowerCase().contains("173212") ??
+                                                                false) ||
+                                                            (user.city
+                                                                    ?.toLowerCase()
+                                                                    .contains("1710") ??
+                                                                false)))
+                                                    ? (user.callingMobileNumber ?? "")
+                                                    : (user.mobileNumber ?? ""));
                                           },
                                           icon: Icon(
                                             Icons.phone_in_talk_sharp,

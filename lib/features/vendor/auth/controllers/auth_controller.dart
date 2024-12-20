@@ -12,6 +12,7 @@ class AuthController extends GetxController {
   Future<void> getUserStatus() async {
     try {
       SharedPreferences introCompleted = await SharedPreferences.getInstance();
+      // introCompleted.clear();
       isLoading.value = true;
       update();
       print(

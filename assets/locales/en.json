@@ -8,21 +8,17 @@
   "reachMoreClientsRegisterYourServicesAndGetNoticedByEventPlanners": "Reach more clients. Register your services and get noticed by event planners.",
   "skip": "Skip",
   "done": "Done",
-
   "welcomeBackYouveBeenMissed": "Welcome back you've been missed!",
   "forgotPassword": "Forgot Password?",
   "signIn": "Sign In",
   "notAMember": "Not a member?",
   "registerNow": "Register Now",
-  
-
-  "search": "Search",
+  "searchLocation": "Search Location",
   "clearFilter": "Clear Filter",
   "work": "Work : ",
   "contact": "Contact : ",
-
-  "lookingForVendors": "Looking for Vendors ?",
-  "registerAsVendor": "Register as vendor !",
+  "lookingForVendors": "I am a customer !",
+  "registerAsVendor": "I am a vendor !",
   "letsGoRightAway": "Let's go right away!",
   "emailTitle": "Email",
   "password": "Password",
@@ -34,20 +30,17 @@
   "signIn": "Sign In",
   "notAMember": "Not a member?",
   "registerNow": "Register Now",
-
-  "title": "KAAMO EVENTS",
+  "title": "KAAMO",
   "name": "Name :",
   "email": "Email :",
   "mobileNo": "Mobile No. :",
   "address": "Address :",
-
   "workAreas": "Work Areas :",
   "settings": "Settings",
   "editInfo": "Edit Info",
   "changeLanguage": "Change Language",
   "logout": "Logout",
   "deleteAccount": "Delete Account",
-
   "letsSetUpYourAccount": "Let’s Set Up Your Account",
   "youreJustAFewStepsAwayFromJoiningUsFillOutTheDetailsBelowToCompleteYourRegistrationAndGetStarted": "You're just a few steps away from joining us. Fill out the details below to complete your registration and get started!",
   "firstName": "First Name",
@@ -58,5 +51,10 @@
   "pinCode": "Pin Code",
   "workType": "Work Type",
   "edit": "Edit",
-  "submit": "Submit"
+  "submit": "Submit",
+  "kindlyProvideThePhoneNumberAssociatedWithYourAccount": "Kindly provide the phone number associated with your current booking, and we'll proceed with scheduling your next appointment.",
+  "referenceMobileNo": "Reference Mobile Number",
+  "bookNow": "Book Now !",
+  "wantToFixYourNextBooking": "Want to fix your next booking or earn more ?",
+  "iHaveReadAndAgreeToThe": "I have read and agree to the "
 }

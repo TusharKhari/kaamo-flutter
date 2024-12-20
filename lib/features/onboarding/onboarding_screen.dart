@@ -86,19 +86,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.only(top: 16, right: 16),
                 // child: _buildImage('flutter.png'),
                 child: InkWell(
-                    onTap: () {
-                      if (localisationController.sharedPreferences
-                                  .getString("country_code") ==
-                              "IN" &&
-                          localisationController.sharedPreferences
-                                  .getString("language_code") ==
-                              "hi") {
-                        localisationController.setLanguage(Locale('en', 'US'));
-                      } else {
-                        localisationController.setLanguage(Locale('hi', 'IN'));
-                      }
-                    },
-                    child: Icon(Icons.language)),
+                  onTap: () {
+                    if (localisationController.sharedPreferences
+                                .getString("country_code") ==
+                            "IN" &&
+                        localisationController.sharedPreferences
+                                .getString("language_code") ==
+                            "hi") {
+                      localisationController.setLanguage(Locale('en', 'US'));
+                    } else {
+                      localisationController.setLanguage(Locale('hi', 'IN'));
+                    }
+                  },
+                  // child: Icon(Icons.language),
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Text(
+                      "Change Language!",
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: logoImageColor,
+                          ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),

@@ -11,6 +11,7 @@ import 'utils/routes/route_names.dart';
 import 'utils/routes/route_pages.dart';
 import 'utils/language/dependency_inj.dart' as dep;
 
+// com.example.kamo
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> _languages = await dep.init();
@@ -61,3 +62,5 @@ class MyApp extends StatelessWidget {
             });
   }
 }
+
+

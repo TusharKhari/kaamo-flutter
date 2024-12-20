@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kamo/common/buttons/app_button.dart';
+import 'package:kamo/common/textfields/app_textfield.dart';
 import 'package:kamo/common/widgets/app_card_widget.dart';
+import 'package:kamo/common/widgets/app_loading_hud.dart';
 import 'package:kamo/features/vendor/home/controller/home_controller.dart';
-import 'package:kamo/features/vendor/registration/controller/registration_controller.dart';
 import 'package:kamo/utils/assets/app_images.dart';
 import 'package:kamo/utils/constants/app_constants.dart';
 import 'package:kamo/utils/routes/route_names.dart';
@@ -19,8 +21,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late HomeController homeController;
+  TextEditingController leadNumberController = TextEditingController();
   var localisationController =
       Get.put(LocalizationController(sharedPreferences: Get.find()));
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    init();
+    super.initState();
+  }
+
+  void init() {
+    homeController = Get.put(HomeController());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     activeTrackColor: logoImageColor,
                     value: (userModalConstant?.isActive ?? false),
                     onChanged: (value) async {
-                      var regC = Get.put(HomeController());
-                      await regC.updateStatus();
+                      await homeController.updateStatus();
                       setState(() {});
                     },
                   ),
@@ -81,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       DetailRowWidget(
                         value1: "name".tr,
                         value2:
-                            "${userModalConstant?.firstName?.capitalizeFirst} ${userModalConstant?.lastName?.capitalizeFirst}",
+                            "${userModalConstant?.firstName?.capitalizeFirst ?? ""} ${userModalConstant?.lastName?.capitalizeFirst ?? ""}",
                       ),
                       DetailRowWidget(
                         value1: "email".tr,
@@ -118,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           Text(
-                            "Want to fix your next booking or earn more ?",
+                            "wantToFixYourNextBooking".tr,
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ],
@@ -129,10 +144,115 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               5.verticalSpace,
               AppButton(
-                title: "Book Now !",
+                title: "bookNow".tr,
                 bColor: Colors.orange,
-                onTap: () {
+                onTap: () async {
                   //
+                  await showModalBottomSheet(
+                    backgroundColor: Colors.white,
+                    showDragHandle: true,
+                    // isScrollControlled: true,
+                    scrollControlDisabledMaxHeightRatio: 0.8,
+                    context: context,
+                    builder: (context) {
+                      return GetBuilder(
+                          init: homeController,
+                          builder: (controller) {
+                            return AppLoadingHud(
+                              isAsyncCall: controller.isLoading,
+                              // isAsyncCall: true,
+                              child: SingleChildScrollView(
+                                child: InkWell(
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                  },
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                    width: double.maxFinite,
+                                    child: Column(
+                                      children: [
+                                        //
+
+                                        SizedBox(
+                                          height: 120,
+                                          child: LottieBuilder.asset(
+                                            AppImages().detailsLottie,
+                                          ),
+                                        ),
+                                        Text(
+                                          "kindlyProvideThePhoneNumberAssociatedWithYourAccount"
+                                              .tr,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge,
+                                        ),
+                                        10.h.verticalSpace,
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: AppTextField(
+                                                controller:
+                                                    leadNumberController,
+                                                autofocus: true,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                hintText:
+                                                    // "Reference Mobile Number",
+                                                    "referenceMobileNo".tr,
+                                                inputFormatters: [
+                                                  LengthLimitingTextInputFormatter(
+                                                      10),
+                                                ],
+                                              ),
+                                            ),
+                                            IconButton(
+                                                onPressed: () async {
+                                                  try {
+                                                    if (leadNumberController
+                                                            .text.length <
+                                                        10) {
+                                                      throw "Please fill number properly.";
+                                                    } else {
+                                                      FocusScope.of(context)
+                                                          .unfocus();
+                                                      bool? res = await homeController
+                                                          .addLead(
+                                                              mobileNo: int.parse(
+                                                                  leadNumberController
+                                                                      .text));
+                                                      if (res == true) {
+                                                        leadNumberController
+                                                            .clear();
+                                                        Get.back();
+                                                        Get.snackbar("Success",
+                                                            "Tank you for sharing, your one more booking confirmed.");
+                                                      }
+                                                    }
+                                                  } catch (e) {
+                                                    Get.snackbar("Error", "$e");
+                                                  }
+                                                },
+                                                icon: Icon(
+                                                  Icons.arrow_forward,
+                                                  size: 50,
+                                                  color: logoImageColor,
+                                                )),
+                                            10.w.horizontalSpace,
+                                          ],
+                                        ),
+                                        500.h.verticalSpace,
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                  );
+                  //
+                  setState(() {});
                 },
               ),
             ],

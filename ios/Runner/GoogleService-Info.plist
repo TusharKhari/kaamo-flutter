@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs.apps.googleusercontent.com</string>
+	<string>1029362855198-ac2l5bv1c2sam26567be34s9icto2f67.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs</string>
+	<string>com.googleusercontent.apps.1029362855198-ac2l5bv1c2sam26567be34s9icto2f67</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>1029362855198-fsr0s05q2gcql7orgskb2523lo3fh7e3.apps.googleusercontent.com</string>
+	<string>1029362855198-7o07ogqjptuuqbgsjcbhpd4984vq2b19.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCynRle0fo64rikdCdqQPBQgFSZCmf_Wok</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.kamo</string>
+	<string>com.kaamo.app</string>
 	<key>PROJECT_ID</key>
 	<string>kamo-7b1be</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1029362855198:ios:200291d268a44595a62d0f</string>
+	<string>1:1029362855198:ios:e09ba02641c6f305a62d0f</string>
 	<key>DATABASE_URL</key>
 	<string>https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>

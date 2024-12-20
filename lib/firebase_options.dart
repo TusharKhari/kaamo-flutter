@@ -51,26 +51,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC4c-3KCXbDUxRSdGrohiJs1tzlRBf46a8',
-    appId: '1:1029362855198:android:92ca152bc392f082a62d0f',
+    appId: '1:1029362855198:android:0c4b2e07d817f0f7a62d0f',
     messagingSenderId: '1029362855198',
     projectId: 'kamo-7b1be',
-    databaseURL:
-        'https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'kamo-7b1be.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCynRle0fo64rikdCdqQPBQgFSZCmf_Wok',
-    appId: '1:1029362855198:ios:200291d268a44595a62d0f',
+    appId: '1:1029362855198:ios:e09ba02641c6f305a62d0f',
     messagingSenderId: '1029362855198',
     projectId: 'kamo-7b1be',
-    databaseURL:
-        'https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://kamo-7b1be-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'kamo-7b1be.firebasestorage.app',
-    androidClientId:
-        '1029362855198-fsr0s05q2gcql7orgskb2523lo3fh7e3.apps.googleusercontent.com',
-    iosClientId:
-        '1029362855198-2k7ctqfcpshtgrp0f086uh08jmrmg4fs.apps.googleusercontent.com',
-    iosBundleId: 'com.example.kamo',
+    androidClientId: '1029362855198-7o07ogqjptuuqbgsjcbhpd4984vq2b19.apps.googleusercontent.com',
+    iosClientId: '1029362855198-ac2l5bv1c2sam26567be34s9icto2f67.apps.googleusercontent.com',
+    iosBundleId: 'com.kaamo.app',
   );
+
 }

@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1029362855198:android:92ca152bc392f082a62d0f",
+        "mobilesdk_app_id": "1:1029362855198:android:0c4b2e07d817f0f7a62d0f",
         "android_client_info": {
-          "package_name": "com.example.kamo"
+          "package_name": "com.kaamo.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1029362855198-fsr0s05q2gcql7orgskb2523lo3fh7e3.apps.googleusercontent.com",
+          "client_id": "1029362855198-7o07ogqjptuuqbgsjcbhpd4984vq2b19.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.kamo",
-            "certificate_hash": "ae45568b1dfde684d39c61ec0e153d4f76428220"
+            "package_name": "com.kaamo.app",
+            "certificate_hash": "4c5c83888ff6a6167876778f58fda1a258dee15b"
           }
         },
         {

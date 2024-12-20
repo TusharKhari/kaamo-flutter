@@ -12,7 +12,7 @@ class AppCardWidget extends StatelessWidget {
       color: Colors.grey[200],
       // shadowColor: Colors.black,
       shadowColor: logoImageColor,
-      elevation: 7,
+      elevation: 4,
       surfaceTintColor: Colors.grey[300], child: child,
     );
   }

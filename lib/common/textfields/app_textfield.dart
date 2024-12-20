@@ -9,6 +9,7 @@ class AppTextField extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final bool? obscureText;
+  final bool? autofocus;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
@@ -25,13 +26,14 @@ class AppTextField extends StatelessWidget {
       this.validator,
       this.inputFormatters,
       this.keyboardType,
-      this.padding});
+      this.padding, this.autofocus});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? const EdgeInsets.symmetric(horizontal: 25),
       child: TextFormField(
+        autofocus: autofocus??false,
         validator: validator,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,

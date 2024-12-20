@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants/app_constants.dart';
 
 class AppButton extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppButton extends StatelessWidget {
       child: Container(
         width: double.maxFinite,
         padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
+        margin:  EdgeInsets.symmetric(horizontal: 25.w),
         decoration: BoxDecoration(
             color:
                 bColor ?? (isReverse == true ? logoImageColor : Colors.black),

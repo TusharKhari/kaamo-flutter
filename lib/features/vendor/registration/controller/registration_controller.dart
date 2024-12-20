@@ -1,14 +1,10 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:kamo/features/vendor/registration/modals/categories_modal/categories_modal.dart';
 import 'package:kamo/features/vendor/registration/modals/categories_modal/subcategory.dart';
 import 'package:kamo/features/vendor/registration/modals/registration_modal.dart';
-import 'package:permission_handler/permission_handler.dart';
-
 import '../../../../utils/constants/app_constants.dart';
 
 class RegistrationController extends GetxController {
@@ -16,42 +12,42 @@ class RegistrationController extends GetxController {
   RxBool isLoading = false.obs;
   bool isAddressByLocation = false;
 
-  Future<Position?> getLocation() async {
-    try {
-      bool serviceEnabled;
-      LocationPermission permission;
-      // Test if location services are enabled.
-      serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        openAppSettings();
-        return Future.error('Location services are disabled.');
-      }
+  // Future<Position?> getLocation() async {
+  //   try {
+  //     bool serviceEnabled;
+  //     LocationPermission permission;
+  //     // Test if location services are enabled.
+  //     serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //     if (!serviceEnabled) {
+  //       openAppSettings();
+  //       return Future.error('Location services are disabled.');
+  //     }
 
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          openAppSettings();
-          return Future.error('Location permissions are denied');
-        }
-      }
+  //     permission = await Geolocator.checkPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       permission = await Geolocator.requestPermission();
+  //       if (permission == LocationPermission.denied) {
+  //         openAppSettings();
+  //         return Future.error('Location permissions are denied');
+  //       }
+  //     }
 
-      if (permission == LocationPermission.deniedForever) {
-        openAppSettings();
-        return Future.error(
-            'Location permissions are permanently denied, we cannot request permissions.');
-      }
-      return await Geolocator.getCurrentPosition();
-    } catch (e) {
-      log("message $e");
-    }
-  }
+  //     if (permission == LocationPermission.deniedForever) {
+  //       openAppSettings();
+  //       return Future.error(
+  //           'Location permissions are permanently denied, we cannot request permissions.');
+  //     }
+  //     return await Geolocator.getCurrentPosition();
+  //   } catch (e) {
+  //     log("message $e");
+  //   }
+  // }
 
 //
   List<CategoriesModal> categoriesList = [];
   List<Subcategory> subCategoriesList = [];
 
-  void getCategories() async {
+  Future<void> getCategories() async {
     try {
       isLoading.value = true;
       update();
@@ -85,9 +81,9 @@ class RegistrationController extends GetxController {
     update();
   }
 
-  void selectSubCategory({required Subcategory selectedCat}) {
+  void selectSubCategory({required String selectedCat}) {
     registrationModal =
-        registrationModal.copyWith(workingLevel2: selectedCat.name);
+        registrationModal.copyWith(workingLevel2: selectedCat);
     update();
   }
 
@@ -139,9 +135,9 @@ class RegistrationController extends GetxController {
     if (registrationModal.firstName?.isEmpty ?? true) {
       throw "Please fill first name.";
     }
-    if (registrationModal.lastName?.isEmpty ?? true) {
-      throw "Please fill last name.";
-    }
+    // if (registrationModal.lastName?.isEmpty ?? true) {
+    //   throw "Please fill last name.";
+    // }
     if (registrationModal.mobileNumber?.isEmpty ?? true) {
       throw "Please fill mobile number.";
     }
@@ -196,12 +192,22 @@ class RegistrationController extends GetxController {
       {"id": 3, "name": "Photography OR Videography", "subcategories": []},
       {
         "id": 4,
-        "name": "Food & Catering",
+        "name": "Catering",
         "subcategories": [
           {"id": 1, "name": "Buffet"},
           {"id": 2, "name": "Cocktail Menu"},
           {"id": 4, "name": "Dessert Stations"},
-          {"id": 5, "name": "Live Food Counters"}
+          {"id": 5, "name": "Live Food Counters"},
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Tent",
+        "subcategories": [
+          {"id": 1, "name": "Tent"},
+          {"id": 2, "name": "Tent and Catering"},
+          {"id": 2, "name": "Tent and Decoration"},
+          {"id": 2, "name": "Tent and Lighting"},
         ]
       },
       {
@@ -247,6 +253,7 @@ class RegistrationController extends GetxController {
           {"id": 4, "name": "Jhanki"},
         ]
       },
+      {"id": 11, "name": "others", "subcategories": []},
     ]
   };
 

@@ -4,7 +4,6 @@ import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:kamo/common/buttons/app_button.dart';
 import 'package:kamo/common/dropdown/app_dropdown_widget.dart';
@@ -223,113 +222,117 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     ],
                                   ),
                                 )
-                              : Column(
-                                  children: [
-                                    InkWell(
-                                      onTap: () async {
-                                        var locD =
-                                            await controller.getLocation();
-                                        controller.registrationModal =
-                                            controller.registrationModal
-                                                .copyWith(
-                                                    latitude:
-                                                        "${locD?.latitude}",
-                                                    longitude:
-                                                        "${locD?.longitude}");
-                                        List<Placemark> placemarks =
-                                            await placemarkFromCoordinates(
-                                                locD?.latitude ?? 52.2165157,
-                                                locD?.longitude ?? 6.9437819);
-                                        if (placemarks.isNotEmpty) {
-                                          Placemark pm = placemarks.first;
-                                          log("message ${pm.toJson()}");
-                                          controller.registrationModal = controller
-                                              .registrationModal
-                                              .copyWith(
-                                                  city:
-                                                      "${pm.name}, ${pm.street}, ${pm.subAdministrativeArea}",
-                                                  state:
-                                                      "${pm.locality}, ${pm.subLocality}, ${pm.thoroughfare}",
-                                                  pinCode: "${pm.postalCode}");
-                                          controller.isAddressByLocation = true;
-                                          controller.update();
-                                        }
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "useMyLocation".tr,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge
-                                                ?.copyWith(
-                                                  color: Colors.grey[500],
-                                                ),
-                                          ),
-                                          5.w.horizontalSpace,
-                                          Icon(
-                                            Icons.my_location_outlined,
-                                            color: Colors.blue[400],
-                                            size: 25,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    20.h.verticalSpace,
-                                    CSCPicker(
-                                      defaultCountry: CscCountry.India,
-                                      disableCountry: true,
-                                      disabledDropdownDecoration: BoxDecoration(
+                              : Visibility(
+                                  visible: true,
+                                  child: Column(
+                                    children: [
+                                      // InkWell(
+                                      //   onTap: () async {
+                                      //     // var locD =
+                                      //     //     await controller.getLocation();
+                                      //     // controller.registrationModal =
+                                      //     //     controller.registrationModal
+                                      //     //         .copyWith(
+                                      //     //             latitude:
+                                      //     //                 "${locD?.latitude}",
+                                      //     //             longitude:
+                                      //     //                 "${locD?.longitude}");
+                                      //     // List<Placemark> placemarks =
+                                      //     //     await placemarkFromCoordinates(
+                                      //     //         locD?.latitude ?? 52.2165157,
+                                      //     //         locD?.longitude ?? 6.9437819);
+                                      //     // if (placemarks.isNotEmpty) {
+                                      //     //   Placemark pm = placemarks.first;
+                                      //     //   log("message ${pm.toJson()}");
+                                      //     //   controller.registrationModal = controller
+                                      //     //       .registrationModal
+                                      //     //       .copyWith(
+                                      //     //           city:
+                                      //     //               "${pm.name}, ${pm.street}, ${pm.subAdministrativeArea}",
+                                      //     //           state:
+                                      //     //               "${pm.locality}, ${pm.subLocality}, ${pm.thoroughfare}",
+                                      //     //           pinCode: "${pm.postalCode}");
+                                      //     //   controller.isAddressByLocation = true;
+                                      //     //   controller.update();
+                                      //     // }
+                                      //   },
+                                      //   child: Row(
+                                      //     mainAxisAlignment:
+                                      //         MainAxisAlignment.end,
+                                      //     children: [
+                                      //       Text(
+                                      //         "useMyLocation".tr,
+                                      //         style: Theme.of(context)
+                                      //             .textTheme
+                                      //             .bodyLarge
+                                      //             ?.copyWith(
+                                      //               color: Colors.grey[500],
+                                      //             ),
+                                      //       ),
+                                      //       5.w.horizontalSpace,
+                                      //       Icon(
+                                      //         Icons.my_location_outlined,
+                                      //         color: Colors.blue[400],
+                                      //         size: 25,
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // ),
+                                      // 20.h.verticalSpace,
+                                      CSCPicker(
+                                        defaultCountry: CscCountry.India,
+                                        disableCountry: true,
+                                        disabledDropdownDecoration:
+                                            BoxDecoration(
+                                                color: Colors.grey.shade200,
+                                                border: Border.all(
+                                                  width: 1,
+                                                  color: Colors.white,
+                                                )),
+                                        dropdownDecoration: BoxDecoration(
                                           color: Colors.grey.shade200,
                                           border: Border.all(
                                             width: 1,
                                             color: Colors.white,
-                                          )),
-                                      dropdownDecoration: BoxDecoration(
-                                        color: Colors.grey.shade200,
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Colors.white,
+                                          ),
                                         ),
+                                        onCountryChanged: (value) {},
+                                        onStateChanged: (value) {
+                                          log("message $value");
+                                          controller.registrationModal =
+                                              controller.registrationModal
+                                                  .copyWith(state: value);
+                                        },
+                                        onCityChanged: (value) {
+                                          log("message $value");
+                                          controller.registrationModal =
+                                              controller.registrationModal
+                                                  .copyWith(city: value);
+                                        },
                                       ),
-                                      onCountryChanged: (value) {},
-                                      onStateChanged: (value) {
-                                        log("message $value");
-                                        controller.registrationModal =
-                                            controller.registrationModal
-                                                .copyWith(state: value);
-                                      },
-                                      onCityChanged: (value) {
-                                        log("message $value");
-                                        controller.registrationModal =
-                                            controller.registrationModal
-                                                .copyWith(city: value);
-                                      },
-                                    ),
-                                    20.h.verticalSpace,
-                                    AppTextField(
-                                      controller: pinCodeController,
-                                      padding: EdgeInsets.zero,
-                                      hintText: "pinCode".tr,
-                                      inputFormatters: [
-                                        LengthLimitingTextInputFormatter(6),
-                                      ],
-                                      validator: (p0) {
-                                        if (p0?.length != 6) {
-                                          return "";
-                                        }
-                                        return null;
-                                      },
-                                      keyboardType: TextInputType.number,
-                                      onChanged: (p0) {
-                                        controller.registrationModal =
-                                            controller.registrationModal
-                                                .copyWith(pinCode: p0);
-                                      },
-                                    ),
-                                  ],
+                                      20.h.verticalSpace,
+                                      AppTextField(
+                                        controller: pinCodeController,
+                                        padding: EdgeInsets.zero,
+                                        hintText: "pinCode".tr,
+                                        inputFormatters: [
+                                          LengthLimitingTextInputFormatter(6),
+                                        ],
+                                        validator: (p0) {
+                                          if (p0?.length != 6) {
+                                            return "";
+                                          }
+                                          return null;
+                                        },
+                                        keyboardType: TextInputType.number,
+                                        onChanged: (p0) {
+                                          controller.registrationModal =
+                                              controller.registrationModal
+                                                  .copyWith(pinCode: p0);
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 ),
                           10.h.verticalSpace,
                           AppDropDownWidget(
@@ -346,28 +349,46 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             onChanged: (p0) {
                               if (p0 is CategoriesModal) {
                                 controller.selectCategory(selectedCat: p0);
+                                controller.update();
                               }
                             },
                           ),
-                          Visibility(
-                            visible: controller.subCategoriesList.isNotEmpty,
-                            child: AppDropDownWidget(
-                              selectedTitle:
-                                  controller.registrationModal.workingLevel2,
-                              options: [],
-                              items: controller.subCategoriesList
-                                  .map(
-                                    (e) => DropdownMenuItem<Subcategory>(
-                                        value: e, child: Text("${e.name}")),
-                                  )
-                                  .toList(),
-                              onChanged: (p0) {
-                                if (p0 is Subcategory) {
-                                  controller.selectSubCategory(selectedCat: p0);
-                                }
-                              },
-                            ),
-                          ),
+                          (controller.registrationModal.workingLevel1
+                                      ?.contains("other") ??
+                                  false)
+                              ? Padding(
+                                  padding: EdgeInsets.only(top: 15.h),
+                                  child: AppTextField(
+                                    padding: EdgeInsets.zero,
+                                    onChanged: (p0) {
+                                      controller.selectSubCategory(
+                                          selectedCat: p0);
+                                    },
+                                    hintText: "Working Category Name",
+                                  ),
+                                )
+                              : Visibility(
+                                  visible:
+                                      controller.subCategoriesList.isNotEmpty,
+                                  child: AppDropDownWidget(
+                                    selectedTitle: controller
+                                        .registrationModal.workingLevel2,
+                                    options: [],
+                                    items: controller.subCategoriesList
+                                        .map(
+                                          (e) => DropdownMenuItem<Subcategory>(
+                                              value: e,
+                                              child: Text("${e.name}")),
+                                        )
+                                        .toList(),
+                                    onChanged: (p0) {
+                                      if (p0 is Subcategory) {
+                                        controller.selectSubCategory(
+                                            selectedCat: p0.name ?? "");
+                                      }
+                                    },
+                                  ),
+                                ),
                           30.h.verticalSpace,
                           AppButton(
                             title: isEdit ? "edit".tr : "submit".tr,
@@ -379,6 +400,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               if (res == true) {
                                 Get.offAllNamed(AppRouteNames().homeScreen);
                               }
+                              // controller.sendData();
                             },
                           ),
                           40.h.verticalSpace,
