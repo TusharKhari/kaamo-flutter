@@ -64,3 +64,8 @@ class MyApp extends StatelessWidget {
 }
 
 
+
+
+// keytool -list -v -keystore /Users/tusharkhari/Desktop/development/flutter_p/kamo/kamo/android/app/upload-keystore.jks
+
+/// android/app/upload-keystore.jks

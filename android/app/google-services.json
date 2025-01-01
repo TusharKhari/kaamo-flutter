@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "1029362855198-7o07ogqjptuuqbgsjcbhpd4984vq2b19.apps.googleusercontent.com",
+          "client_id": "1029362855198-gr3g9n30cs196qs9dsf28h1vbdndqfbg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.kaamo.app",
-            "certificate_hash": "4c5c83888ff6a6167876778f58fda1a258dee15b"
+            "certificate_hash": "86874908392e5966bdfb9a3d8d3c3264b1df4524"
           }
         },
         {
